@@ -1,0 +1,13 @@
+<div class="input-group rounded">
+	{{ form_start(form) }}
+	<form class="form-inline">
+		{{ form_widget(form.q, { 'attr': {'class': 'form-control mr-sm-2 mb-2'}}) }}
+
+		<div class="d-flex flex-col justify-center">
+			{{ form_widget(form.carCategories, { 'attr': {'class': 'mt-2'}}) }}
+		</div>
+
+		<button class="btn btn-primary mt-2" type="submit">Search</button>
+	</form>
+	{{ form_end(form) }}
+	</div>

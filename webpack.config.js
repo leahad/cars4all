@@ -14,6 +14,13 @@ Encore
     // only needed for CDN's or subdirectory deploy
     //.setManifestKeyPrefix('build/')
 
+    .copyFiles({
+        from: './assets/images',
+
+        // optional target path, relative to the output dir
+        to: 'images/[path][name].[ext]',
+    })
+
     /*
      * ENTRY CONFIG
      *
@@ -28,6 +35,7 @@ Encore
     // will require an extra script tag for runtime.js
     // but, you probably want this, unless you're building a single-page app
     .enableSingleRuntimeChunk()
+
 
     /*
      * FEATURE CONFIG
@@ -68,6 +76,12 @@ Encore
 
     // uncomment if you're having problems with a jQuery plugin
     //.autoProvidejQuery()
-;
+    ;
 
-module.exports = Encore.getWebpackConfig();
+const fullConfig = Encore.getWebpackConfig();
+fullConfig.devServer = {
+    watchFiles: {
+        paths: ['templates/**/*.html.twig'],
+    },
+};
+module.exports = fullConfig;

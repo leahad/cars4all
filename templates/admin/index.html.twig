@@ -1,0 +1,54 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} Car index {% endblock %}
+
+{% block body %}
+<div class="ms-4">
+	<h1 class="mt-4">Car index</h1>
+	<h5>
+		{{ cars.getTotalItemCount}}
+		cars in stock
+	</h5>
+	<a href="{{ path('new') }}">Add a car</a>
+</div>
+	
+<table class="table">
+	<thead>
+		<tr>
+			<th>Name</th>
+			<th>Category</th>
+			<th>Seats</th>
+			<th>Doors</th>
+			<th>Cost</th>
+			<th>Image</th>
+			<th>Created</th>
+			<th>actions</th>
+		</tr>
+	</thead>
+	<tbody>
+		{% for car in cars %}
+			<tr>
+				<td>{{ car.name|capitalize }}</td>
+				<td>{{ car.category.name }}</td>
+				<td>{{ car.nbSeats }}</td>
+				<td>{{ car.nbDoors }}</td>
+				<td>{{ car.cost|round(0, 'floor') }}</td>
+				<td>{{ car.image }}</td>
+				<td>{{ car.createdAt ? car.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+				<td>
+					<a href="{{ path('show', {'id': car.id}) }}">show</a>
+					<a href="{{ path('edit', {'id': car.id}) }}">edit</a>
+				</td>
+			</tr>
+		{% else %}
+			<tr>
+				<td colspan="8">no records found</td>
+			</tr>
+		{% endfor %}
+	</tbody>
+</table>
+
+<div class="navigation d-flex justify-content-center">
+	{{ knp_pagination_render(cars) }}
+</div>
+{% endblock %}

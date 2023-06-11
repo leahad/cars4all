@@ -1,5 +1,16 @@
 @import "~bootstrap/scss/bootstrap";
 
+
 body {
-    background-color: red;
+    background-color: rgb(193, 191, 191);
+}
+
+#search_carCategories input[type="checkbox"] {
+    margin-right: 0.5rem;
+    display:flex;
+}
+
+#search_carCategories label {
+    margin-right: 0.5rem;
+    font-size: 14px;
 }
