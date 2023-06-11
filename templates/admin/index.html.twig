@@ -12,22 +12,22 @@
 	<a href="{{ path('new') }}">Add a car</a>
 </div>
 	
-<table class="table">
+<table class="table table-hover">
 	<thead>
 		<tr>
-			<th>Name</th>
-			<th>Category</th>
-			<th>Seats</th>
-			<th>Doors</th>
-			<th>Cost</th>
-			<th>Image</th>
-			<th>Created</th>
-			<th>actions</th>
+			<th scope="col">Name</th>
+			<th scope="col">Category</th>
+			<th scope="col">Seats</th>
+			<th scope="col">Doors</th>
+			<th scope="col">Cost</th>
+			<th scope="col">Image</th>
+			<th scope="col">Created</th>
+			<th scope="col">actions</th>
 		</tr>
 	</thead>
 	<tbody>
 		{% for car in cars %}
-			<tr>
+			<tr scope="table-secondary">
 				<td>{{ car.name|capitalize }}</td>
 				<td>{{ car.category.name }}</td>
 				<td>{{ car.nbSeats }}</td>

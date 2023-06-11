@@ -11,7 +11,7 @@
 		{{ car.name|capitalize}}
 	</h1>
 
-	<a class="mt-4" href="{{ path('index') }}">back to the car list</a>
+	<a class="mt-4" href="{{ path('index') }}">back to the cars list</a>
 
 	<table class="table">
 		<tbody>
@@ -47,7 +47,9 @@
 		</tbody>
 	</table>
 
-	<a href="{{ path('edit', {'id': car.id}) }}">edit</a>
+	<form action="{{ path('edit', {'id': car.id}) }}" method="get">
+		<button type="submit" class="btn btn-primary" style="width:99.49px;" >Edit</button>
+    </form>
 
 	{{ include('admin/_delete_form.html.twig') }}
 </div>

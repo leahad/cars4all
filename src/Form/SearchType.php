@@ -18,7 +18,9 @@ class SearchType extends AbstractType
             ->add('q', TextType::class, [
                 'attr' => [
                     'placeholder' => 'Search by name'
-                ]
+                ],
+                'empty_data' => '',
+                'required' => false
             ])
             ->add('carCategories', EntityType::class, [
                 'class' => CarCategory::class,
