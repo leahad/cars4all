@@ -7,7 +7,6 @@ use DateTimeImmutable;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
-
 #[ORM\Entity(repositoryClass: CarRepository::class)]
 class Car
 {
@@ -38,6 +37,7 @@ class Car
 
     #[ORM\Column(length: 255, nullable: true)]
     #[Assert\Length(max: 255)]
+    #[Assert\Url]
     private ?string $image = null;
 
     #[ORM\Column]

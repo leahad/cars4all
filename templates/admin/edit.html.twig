@@ -3,9 +3,9 @@
 {% block title %} Edit Car {% endblock %}
 
 {% block body %}
-<div class="container">
+<div class="container mb-4">
 	<h1 class="mt-4">Edit Car</h1>
-	<a class="mt-4" href="{{ path('index') }}">back to the car list</a>
+	<a class="mt-4" href="{{ path('index') }}">back to the cars list</a>
 	<div class="container" style=" width: 35rem">
 		{{ include('admin/_form.html.twig', {'button_label': 'Update'}) }}
 		<div class="d-flex justify-content-center mb-4">

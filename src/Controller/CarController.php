@@ -2,7 +2,6 @@
 
 namespace App\Controller;
 
-use App\Entity\CarCategory;
 use App\Form\SearchType;
 use App\Model\SearchData;
 use App\Repository\CarRepository;
@@ -30,21 +29,14 @@ class CarController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            
             $searchData->page = $request->query->getInt('page', 1);
             $cars = $carRepository->findBySearch($searchData);
-    
-            return $this->render('home.html.twig', [
-                'form' => $form->createView(),
-                'cars' => $cars,
-                'weather' => $weatherDisplay->weatherPerHour(),
-            ]);
         }
 
         return $this->render('home.html.twig', [
             'cars' => $cars,
             'form' => $form->createView(),
-            'weather' => $weatherDisplay->weatherPerHour(),
+            'weather' => $weatherDisplay->GetWeatherPerHour(),
         ]);
     }
 }

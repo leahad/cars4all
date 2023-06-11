@@ -9,6 +9,13 @@ use Symfony\Component\String\Slugger\SluggerInterface;
 
 class CarCategoryFixtures extends Fixture
 {
+    public const CATEGORIES = [
+        'A-segment mini cars',
+        'B-segment small cars',
+        'C-segment medium cars',
+        'D-segment large cars',
+        'E-segment executive cars',
+    ];
 
     private SluggerInterface $slugger;
 
@@ -17,22 +24,19 @@ class CarCategoryFixtures extends Fixture
         $this->slugger = $slugger;
     }
 
-    const CATEGORIES = [
-        'A-segment mini cars',
-        'B-segment small cars',
-        'C-segment medium cars',
-        'D-segment large cars',
-        'E-segment executive cars',
-    ];
-
     public function load(ObjectManager $manager): void
     {
         foreach (self::CATEGORIES as $categoryName) {
             $carCategory = new CarCategory();
+
             $carCategory->setName($categoryName);
+            
             $manager->persist($carCategory);
+            
             $this->addReference('category_' . $this->slugger->slug($categoryName)->lower(), $carCategory);
+        
         }
+        
         $manager->flush();
     }
 }

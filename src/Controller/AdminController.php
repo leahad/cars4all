@@ -22,6 +22,7 @@ class AdminController extends AbstractController
             $request->query->getInt('page', 1),
             20
         );
+        
         return $this->render('admin/index.html.twig', [
             'cars' => $cars,
         ]);

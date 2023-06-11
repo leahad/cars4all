@@ -22,7 +22,6 @@ class CarType extends AbstractType
     {
         $builder
             ->add('name', TextType::class, [
-                'required' => true,
                 'attr' => [
                     'class' => 'form-control',
                     'minlenght' => '2',
@@ -32,13 +31,8 @@ class CarType extends AbstractType
                 'label_attr' => [
                     'class' => 'form-label mt-4'
                 ],
-                'constraints' => [
-                    new Assert\Length(['min' => 2, 'max' => 255]),
-                    new Assert\NotBlank()
-                ]
             ])
             ->add('nbSeats', IntegerType::class, [
-                'required' => true,
                 'attr' => [
                     'class' => 'form-control',
                 ],
@@ -46,12 +40,8 @@ class CarType extends AbstractType
                 'label_attr' => [
                     'class' =>  'form-label mt-4'
                 ],
-                'constraints' => [
-                    new Assert\NotNull()
-                ]
             ])
             ->add('nbDoors', IntegerType::class, [
-                'required' => true,
                 'attr' => [
                     'class' => 'form-control'
                 ],
@@ -59,13 +49,9 @@ class CarType extends AbstractType
                 'label_attr' => [
                     'class' => 'form-label mt-4'
                 ],
-                'constraints' => [
-                    new Assert\NotNull()
-                ]
             ])
             ->add('cost', MoneyType::class, [
-                'currency'=>'',
-                'required' => true,
+                'currency' => '€',
                 'attr' => [
                     'class' => 'form-control'
                 ],
@@ -73,9 +59,6 @@ class CarType extends AbstractType
                 'label_attr' => [
                     'class' => 'form-label mt-4',
                 ],
-                'constraints' => [
-                    new Assert\NotNull()
-                ]
             ])
             ->add('image', UrlType::class, [
                 'required' => false,
@@ -88,11 +71,11 @@ class CarType extends AbstractType
                 ],
             ])
             ->add('category', EntityType::class, [
+                'placeholder' => 'Choose a category',
                 'class' => CarCategory::class,
                 'choice_label' => 'name',
-                'required' => true,
                 'attr' => [
-                    'class' => 'form-control',
+                    'class' => 'form-select',
                 ],
                 'label' => 'Category',
                 'label_attr' => [
